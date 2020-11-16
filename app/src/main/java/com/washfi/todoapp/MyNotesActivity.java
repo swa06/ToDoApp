@@ -77,11 +77,24 @@ public class MyNotesActivity extends AppCompatActivity {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewTitle.setText(editTextTitle.getText().toString());
-                textViewDescription.setText(editTextDescription.getText().toString());
+                Note note = new Note();
+                note.setTitle(editTextTitle.getText().toString());
+                note.setDescription(editTextDescription.getText().toString());
+                notes.add(note);
+
+                setUpRecyclerView();
+
                 dialog.hide();
             }
         });
         dialog.show();
+    }
+
+    private void setUpRecyclerView() {
+        NoteAdapter noteAdapter = new NoteAdapter(notes);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MyNotesActivity.this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerViewNotes.setLayoutManager(linearLayoutManager);
+        recyclerViewNotes.setAdapter(noteAdapter);
     }
 }
