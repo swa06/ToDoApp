@@ -8,19 +8,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.washfi.todoapp.adapter.NoteAdapter;
+import com.washfi.todoapp.model.Note;
+
+import java.util.ArrayList;
 
 public class MyNotesActivity extends AppCompatActivity {
 
     String fullName;
     FloatingActionButton fabAddNotes;
-    TextView textViewTitle, textViewDescription;
     SharedPreferences sharedPreferences;
+    RecyclerView recyclerViewNotes;
+    ArrayList<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,7 @@ public class MyNotesActivity extends AppCompatActivity {
         bindView();
         setUpSharedPreferences();
         getIntentData();
-
+        notes = new ArrayList<>();
         fabAddNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,8 +60,7 @@ public class MyNotesActivity extends AppCompatActivity {
 
     private void bindView() {
         fabAddNotes = findViewById(R.id.fabAddNotes);
-        textViewTitle = findViewById(R.id.textViewTitle);
-        textViewDescription = findViewById(R.id.textViewDescription);
+        recyclerViewNotes = findViewById(R.id.recyclerViewNotes);
     }
 
     private void setUpDialogBox() {
