@@ -9,15 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.washfi.todoapp.R;
+import com.washfi.todoapp.clickListeners.ItemClickListener;
 import com.washfi.todoapp.model.Note;
 
 import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
-    List<Note> noteList;
+    private List<Note> noteList;
+    private ItemClickListener itemClickListener;
 
-    public NoteAdapter(List<Note> noteList) {
+    public NoteAdapter(List<Note> noteList, ItemClickListener itemClickListener) {
         this.noteList = noteList;
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -30,11 +33,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NoteAdapter.ViewHolder holder, int position) {
-        Note note = noteList.get(position);
+        final Note note = noteList.get(position);
         String title = note.getTitle();
         String description = note.getDescription();
         holder.textViewTitle.setText(title);
         holder.textViewDescription.setText(description);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               itemClickListener.onClick(note);
+            }
+        });
     }
 
     @Override
