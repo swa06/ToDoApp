@@ -1,4 +1,4 @@
-package com.washfi.todoapp
+package com.washfi.todoapp.view
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.washfi.todoapp.PrefConstant.SHARED_PREFERENCE_NAME
+import com.washfi.todoapp.utils.AppConstant
+import com.washfi.todoapp.utils.PrefConstant
+import com.washfi.todoapp.utils.PrefConstant.SHARED_PREFERENCE_NAME
+import com.washfi.todoapp.R
 
 class LoginActivity : AppCompatActivity() {
     lateinit var editTextFullName: EditText

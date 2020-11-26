@@ -1,10 +1,12 @@
-package com.washfi.todoapp
+package com.washfi.todoapp.view
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.washfi.todoapp.utils.PrefConstant
+import com.washfi.todoapp.R
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var sharedPreference: SharedPreferences

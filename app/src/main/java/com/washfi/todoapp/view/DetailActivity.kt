@@ -1,8 +1,10 @@
-package com.washfi.todoapp
+package com.washfi.todoapp.view
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.washfi.todoapp.utils.AppConstant
+import com.washfi.todoapp.R
 
 class DetailActivity : AppCompatActivity() {
     val TAG ="DetailActivity"
