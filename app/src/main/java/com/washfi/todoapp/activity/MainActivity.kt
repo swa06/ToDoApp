@@ -1,4 +1,4 @@
-package com.washfi.todoapp.view
+package com.washfi.todoapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
