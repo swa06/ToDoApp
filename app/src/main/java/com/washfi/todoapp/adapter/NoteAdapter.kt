@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.CompoundButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.washfi.todoapp.R
 import com.washfi.todoapp.clickListeners.ItemClickListener
 import com.washfi.todoapp.db.Note
@@ -26,6 +28,8 @@ class NoteAdapter(val list: List<Note>, val itemClickListener: ItemClickListener
         holder.textViewTitle.text = title
         holder.textViewDescription.text =description
         holder.checkBoxMarkStatus.isChecked = notes.isTaskCompleted
+        Glide.with(holder.itemView).load(notes.imagePath).into(holder.imageView)
+
         holder.itemView.setOnClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
                itemClickListener.onClick(notes)
@@ -47,5 +51,6 @@ class NoteAdapter(val list: List<Note>, val itemClickListener: ItemClickListener
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
         val checkBoxMarkStatus : CheckBox = itemView.findViewById(R.id.checkBoxMarkStatus)
+        val imageView : ImageView = itemView.findViewById(R.id.imageView)
     }
 }

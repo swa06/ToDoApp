@@ -9,6 +9,7 @@ import androidx.room.RoomDatabase
 abstract class NotesDatabase : RoomDatabase() {
     abstract fun notesDao(): NotesDao
 
+    //companion works like static in Java
     companion object {
         lateinit var INSTANCE: NotesDatabase
         fun getInstance(context: Context): NotesDatabase {

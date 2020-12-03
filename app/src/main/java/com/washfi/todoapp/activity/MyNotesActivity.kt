@@ -1,30 +1,31 @@
-package com.washfi.todoapp.view
+package com.washfi.todoapp.activity
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.washfi.todoapp.NotesApp
-import com.washfi.todoapp.utils.AppConstant
-import com.washfi.todoapp.utils.AppConstant.DESCRIPTION
-import com.washfi.todoapp.utils.AppConstant.TITLE
-import com.washfi.todoapp.utils.PrefConstant
 import com.washfi.todoapp.R
 import com.washfi.todoapp.adapter.NoteAdapter
 import com.washfi.todoapp.clickListeners.ItemClickListener
 import com.washfi.todoapp.db.Note
+import com.washfi.todoapp.utils.AppConstant
+import com.washfi.todoapp.utils.AppConstant.DESCRIPTION
+import com.washfi.todoapp.utils.AppConstant.IMAGE_PATH
+import com.washfi.todoapp.utils.AppConstant.TITLE
+import com.washfi.todoapp.utils.PrefConstant
 
 class MyNotesActivity : AppCompatActivity() {
+
+    companion object {
+        const val ADD_NOTE_CODE = 100
+    }
+
     var fullName: String = ""
     lateinit var fabAddNotes: FloatingActionButton
     lateinit var sharedPreferences: SharedPreferences
@@ -42,11 +43,25 @@ class MyNotesActivity : AppCompatActivity() {
         supportActionBar?.title = fullName
         fabAddNotes.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
-                setUpDialog()
+                val intent = Intent(this@MyNotesActivity, AddNotesActivity::class.java)
+                startActivityForResult(intent, ADD_NOTE_CODE)
             }
 
         })
         setUpRecyclerView()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == ADD_NOTE_CODE) {
+            val title = data?.getStringExtra(TITLE)
+            val description = data?.getStringExtra(DESCRIPTION)
+            val imagePath = data?.getStringExtra(IMAGE_PATH)
+            val note = Note(title = title!!, description = description!!, imagePath = imagePath!!)
+            notes.add(note)
+            addNotesToDb(note)
+            recyclerViewNotes.adapter?.notifyItemChanged(notes.size - 1)
+        }
     }
 
     private fun getDataFromDataBase() {
@@ -55,7 +70,7 @@ class MyNotesActivity : AppCompatActivity() {
         notes.addAll(notesDao.getAll())
     }
 
-    private fun setUpDialog() {
+/*    private fun setUpDialog() {
         val view = LayoutInflater.from(this@MyNotesActivity).inflate(R.layout.add_notes_dialog_layout, null)
         val editTextTitle = view.findViewById<EditText>(R.id.editTextTitle)
         val editTextDescription = view.findViewById<EditText>(R.id.editTextDescription)
@@ -80,7 +95,7 @@ class MyNotesActivity : AppCompatActivity() {
             }
         })
         dialog.show()
-    }
+    }*/
 
     private fun addNotesToDb(note: Note) {
         val notesApp = applicationContext as NotesApp
