@@ -8,6 +8,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.Constraints
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.washfi.todoapp.NotesApp
 import com.washfi.todoapp.R
@@ -19,6 +22,8 @@ import com.washfi.todoapp.utils.AppConstant.DESCRIPTION
 import com.washfi.todoapp.utils.AppConstant.IMAGE_PATH
 import com.washfi.todoapp.utils.AppConstant.TITLE
 import com.washfi.todoapp.utils.PrefConstant
+import com.washfi.todoapp.workManager.MyWorker
+import java.util.concurrent.TimeUnit
 
 class MyNotesActivity : AppCompatActivity() {
 
@@ -49,6 +54,16 @@ class MyNotesActivity : AppCompatActivity() {
 
         })
         setUpRecyclerView()
+        setUpWorkManager()
+    }
+
+    private fun setUpWorkManager() {
+        val constraint = Constraints.Builder()
+                .build()
+        val request = PeriodicWorkRequest.Builder(MyWorker::class.java, 1, TimeUnit.MINUTES)
+                .setConstraints(constraint)
+                .build()
+        WorkManager.getInstance(this).enqueue(request)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
