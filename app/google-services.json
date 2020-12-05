@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "679194401804",
+    "project_id": "todo-1e54b",
+    "storage_bucket": "todo-1e54b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679194401804:android:c7d202dbc53c210b0e2229",
+        "android_client_info": {
+          "package_name": "com.washfi.todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679194401804-53cioj9i1714s15o536a1v8jdk4ucnfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSQ0NywoBjq4fAXTTs4sgchPOhdYZopns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679194401804-53cioj9i1714s15o536a1v8jdk4ucnfe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
