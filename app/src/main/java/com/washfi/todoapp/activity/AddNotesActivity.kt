@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -117,7 +118,7 @@ class AddNotesActivity : AppCompatActivity() {
                     try {
                         photoFile = createImageFile()
                     } catch (e: Exception) {
-
+                        Log.d("AddNotesActivity", e.toString())
                     }
                     if (photoFile != null) {
                         val photoUri = FileProvider.getUriForFile(this@AddNotesActivity,
