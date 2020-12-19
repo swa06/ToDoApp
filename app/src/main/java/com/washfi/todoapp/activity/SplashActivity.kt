@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.washfi.todoapp.utils.PrefConstant
 import com.washfi.todoapp.R
+import com.washfi.todoapp.onboarding.OnboardingActivity
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var sharedPreference: SharedPreferences
@@ -45,12 +46,18 @@ class SplashActivity : AppCompatActivity() {
 
     private fun checkLoginStatus() {
         val isLoggedIn = sharedPreference.getBoolean(PrefConstant.IS_LOGGED_IN, false)
+        val isBoardingSuccessful = sharedPreference.getBoolean(PrefConstant.ON_BOARDED_SUCCESSFULLY, false)
         if (isLoggedIn) {
             val intent = Intent(this@SplashActivity, MyNotesActivity::class.java)
             startActivity(intent)
         } else {
-            val intent = Intent(this@SplashActivity, LoginActivity::class.java)
-            startActivity(intent)
+            if (isBoardingSuccessful) {
+                val intent = Intent(this@SplashActivity, LoginActivity::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this@SplashActivity, OnboardingActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
