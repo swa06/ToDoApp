@@ -13,13 +13,12 @@ import com.washfi.todoapp.utils.AppConstant
 import com.washfi.todoapp.utils.PrefConstant
 import com.washfi.todoapp.utils.PrefConstant.SHARED_PREFERENCE_NAME
 import com.washfi.todoapp.R
+import com.washfi.todoapp.utils.StoreSession
 
 class LoginActivity : AppCompatActivity() {
     lateinit var editTextFullName: EditText
     lateinit var editTextUserName: EditText
     lateinit var buttonLogin:Button
-    lateinit var sharedPreferences:SharedPreferences
-    lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setUpSharedPreferences() {
-        sharedPreferences = getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
+        StoreSession.init(this)
     }
 
     private fun bindView() {
@@ -56,14 +55,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveFullName(fullName: String) {
-        editor = sharedPreferences.edit()
-        editor.putString(PrefConstant.FULL_NAME, fullName)
-        editor.apply()
+        StoreSession.write(PrefConstant.FULL_NAME, fullName)
     }
 
     private fun saveLoginStatus() {
-        editor = sharedPreferences.edit()
-        editor.putBoolean(PrefConstant.IS_LOGGED_IN, true)
-        editor.apply()
+        StoreSession.write(PrefConstant.IS_LOGGED_IN, true)
     }
 }

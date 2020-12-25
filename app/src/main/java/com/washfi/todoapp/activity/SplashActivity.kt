@@ -12,9 +12,9 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.washfi.todoapp.utils.PrefConstant
 import com.washfi.todoapp.R
 import com.washfi.todoapp.onboarding.OnboardingActivity
+import com.washfi.todoapp.utils.StoreSession
 
 class SplashActivity : AppCompatActivity() {
-    private lateinit var sharedPreference: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,17 +41,18 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setUpSharedPreferences() {
-        sharedPreference = getSharedPreferences(PrefConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
+        StoreSession.init(this)
     }
 
     private fun checkLoginStatus() {
-        val isLoggedIn = sharedPreference.getBoolean(PrefConstant.IS_LOGGED_IN, false)
-        val isBoardingSuccessful = sharedPreference.getBoolean(PrefConstant.ON_BOARDED_SUCCESSFULLY, false)
-        if (isLoggedIn) {
+        val isLoggedIn = StoreSession.read(PrefConstant.IS_LOGGED_IN)
+        val isBoardingSuccessful = StoreSession.read(PrefConstant.ON_BOARDED_SUCCESSFULLY)
+
+        if (isLoggedIn!!) {
             val intent = Intent(this@SplashActivity, MyNotesActivity::class.java)
             startActivity(intent)
         } else {
-            if (isBoardingSuccessful) {
+            if (isBoardingSuccessful!!) {
                 val intent = Intent(this@SplashActivity, LoginActivity::class.java)
                 startActivity(intent)
             } else {
