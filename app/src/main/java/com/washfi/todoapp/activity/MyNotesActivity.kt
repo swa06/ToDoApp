@@ -1,5 +1,6 @@
 package com.washfi.todoapp.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -70,7 +71,7 @@ class MyNotesActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == ADD_NOTE_CODE) {
+        if (requestCode == ADD_NOTE_CODE && resultCode == Activity.RESULT_OK) {
             val title = data?.getStringExtra(TITLE)
             val description = data?.getStringExtra(DESCRIPTION)
             val imagePath = data?.getStringExtra(IMAGE_PATH)
