@@ -5,4 +5,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logo">Logo</string>
     <string name="notes_app">Notes App</string>
+    <string name="your_own_todo_notes_app">Your own Todo Notes App</string>
+    <string name="create_your_own_todo_for_the_day">Create your own Todo for the day</string>
+    <string name="add_image_in_your_notes">Add Image in your notes</string>
+    <string name="choose_images_either_from_camera_or_your_gallery">Choose images either from Camera or Your gallery</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 </resources>

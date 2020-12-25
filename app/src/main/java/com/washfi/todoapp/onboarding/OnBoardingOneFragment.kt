@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import com.washfi.todoapp.R
 
 class OnBoardingOneFragment : Fragment() {
-    lateinit var textViewNext: TextView
+    lateinit var buttonNext: Button
     lateinit var onNextClick: OnNextClick
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -24,12 +25,12 @@ class OnBoardingOneFragment : Fragment() {
     }
 
     private fun bindViews(view: View) {
-        textViewNext = view.findViewById(R.id.textViewDone)
+        buttonNext = view.findViewById(R.id.buttonNext)
         addClickListeners()
     }
 
     private fun addClickListeners() {
-        textViewNext.setOnClickListener(object : View.OnClickListener {
+        buttonNext.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 onNextClick.onClick()
             }

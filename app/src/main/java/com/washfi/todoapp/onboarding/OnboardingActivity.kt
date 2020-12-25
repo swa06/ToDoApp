@@ -1,20 +1,21 @@
 package com.washfi.todoapp.onboarding
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 import com.washfi.todoapp.R
 import com.washfi.todoapp.activity.LoginActivity
-import com.washfi.todoapp.data.local.pref.PrefConstant
 import com.washfi.todoapp.data.local.pref.PrefConstant.ON_BOARDED_SUCCESSFULLY
+import com.washfi.todoapp.data.local.pref.StoreSession
 
 class OnboardingActivity : AppCompatActivity(), OnBoardingOneFragment.OnNextClick, OnBoardingTwoFragment.OnOptionClick {
-    lateinit var viewPager: ViewPager
-    private lateinit var sharedPreference: SharedPreferences
-    lateinit var editor: SharedPreferences.Editor
+    companion object{
+        private const val FIRST_ITEM = 0
+        private const val SECOND_ITEM = 1
+    }
+    lateinit var viewPager: ViewPager2
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,22 +25,21 @@ class OnboardingActivity : AppCompatActivity(), OnBoardingOneFragment.OnNextClic
     }
 
     private fun setUpSharedPreferences() {
-        sharedPreference = getSharedPreferences(PrefConstant.SHARED_PREFERENCE_NAME,
-                Context.MODE_PRIVATE)
+        StoreSession.init(this)
     }
 
     private fun bindView() {
         viewPager = findViewById(R.id.viewPager)
-        val adapter = FragmentAdapter(supportFragmentManager)
+        val adapter = FragmentAdapter(this)
         viewPager.adapter = adapter
     }
 
     override fun onClick() {
-        viewPager.currentItem = 1
+        viewPager.currentItem = SECOND_ITEM
     }
 
     override fun onOptionBack() {
-        viewPager.currentItem = 0
+        viewPager.currentItem = FIRST_ITEM
     }
 
     override fun onOptionDone() {
@@ -49,8 +49,6 @@ class OnboardingActivity : AppCompatActivity(), OnBoardingOneFragment.OnNextClic
     }
 
     private fun saveOnBoardingStatus() {
-        editor = sharedPreference.edit()
-        editor.putBoolean(ON_BOARDED_SUCCESSFULLY, true)
-        editor.apply()
+        StoreSession.write(ON_BOARDED_SUCCESSFULLY, true)
     }
 }
