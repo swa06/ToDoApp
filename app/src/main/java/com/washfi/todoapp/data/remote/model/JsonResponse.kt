@@ -1,4 +1,4 @@
-package com.washfi.todoapp.model
+package com.washfi.todoapp.data.remote.model
 
 data class JsonResponse(val status_code: String, val message: String, val data: List<Data>)
 

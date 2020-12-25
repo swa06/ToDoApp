@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.washfi.todoapp.R
-import com.washfi.todoapp.model.Data
+import com.washfi.todoapp.data.remote.model.Data
 
 class BlogAdapter(val list: List<Data>) : RecyclerView.Adapter<BlogAdapter.ViewHolder>() {
 

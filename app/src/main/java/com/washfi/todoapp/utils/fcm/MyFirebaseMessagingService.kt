@@ -1,4 +1,4 @@
-package com.washfi.todoapp.fcm
+package com.washfi.todoapp.utils.fcm
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

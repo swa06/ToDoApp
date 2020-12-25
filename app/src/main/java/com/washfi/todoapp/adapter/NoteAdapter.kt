@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.washfi.todoapp.R
 import com.washfi.todoapp.clickListeners.ItemClickListener
-import com.washfi.todoapp.db.Note
+import com.washfi.todoapp.data.local.db.Note
 
 class NoteAdapter(val list: List<Note>, val itemClickListener: ItemClickListener) :
         RecyclerView.Adapter<NoteAdapter.ViewHolder>() {

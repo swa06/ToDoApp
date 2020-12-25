@@ -1,4 +1,4 @@
-package com.washfi.todoapp.utils
+package com.washfi.todoapp.data.local.pref
 
 object PrefConstant {
     var SHARED_PREFERENCE_NAME = "notes_app_pref"

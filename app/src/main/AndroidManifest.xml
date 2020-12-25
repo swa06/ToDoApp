@@ -33,7 +33,7 @@
         </provider>
 
         <service
-            android:name=".fcm.MyFirebaseMessagingService"
+            android:name="com.washfi.todoapp.utils.fcm.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -45,7 +45,7 @@
             android:value="@string/notification_channel_id" />
 
         <activity android:name=".activity.AddNotesActivity" />
-        <activity android:name=".activity.SplashActivity">
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

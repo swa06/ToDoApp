@@ -8,8 +8,8 @@ import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
 import com.washfi.todoapp.R
 import com.washfi.todoapp.activity.LoginActivity
-import com.washfi.todoapp.utils.PrefConstant
-import com.washfi.todoapp.utils.PrefConstant.ON_BOARDED_SUCCESSFULLY
+import com.washfi.todoapp.data.local.pref.PrefConstant
+import com.washfi.todoapp.data.local.pref.PrefConstant.ON_BOARDED_SUCCESSFULLY
 
 class OnboardingActivity : AppCompatActivity(), OnBoardingOneFragment.OnNextClick, OnBoardingTwoFragment.OnOptionClick {
     lateinit var viewPager: ViewPager

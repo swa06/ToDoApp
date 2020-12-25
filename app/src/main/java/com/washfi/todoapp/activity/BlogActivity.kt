@@ -11,7 +11,7 @@ import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
 import com.washfi.todoapp.R
 import com.washfi.todoapp.adapter.BlogAdapter
-import com.washfi.todoapp.model.JsonResponse
+import com.washfi.todoapp.data.remote.model.JsonResponse
 
 
 class BlogActivity : AppCompatActivity() {

@@ -1,18 +1,18 @@
-package com.washfi.todoapp.activity
+package com.washfi.todoapp.splash
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
-import com.washfi.todoapp.utils.PrefConstant
+import com.washfi.todoapp.data.local.pref.PrefConstant
 import com.washfi.todoapp.R
+import com.washfi.todoapp.activity.LoginActivity
+import com.washfi.todoapp.activity.MyNotesActivity
 import com.washfi.todoapp.onboarding.OnboardingActivity
-import com.washfi.todoapp.utils.StoreSession
+import com.washfi.todoapp.data.local.pref.StoreSession
 
 class SplashActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.washfi.todoapp.db
+package com.washfi.todoapp.data.local.db
 
 import android.content.Context
 import androidx.room.Database

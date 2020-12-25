@@ -1,4 +1,4 @@
-package com.washfi.todoapp.workManager
+package com.washfi.todoapp.utils.workManager
 
 import android.content.Context
 import androidx.work.Worker

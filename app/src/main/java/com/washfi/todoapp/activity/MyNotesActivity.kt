@@ -19,13 +19,13 @@ import com.washfi.todoapp.NotesApp
 import com.washfi.todoapp.R
 import com.washfi.todoapp.adapter.NoteAdapter
 import com.washfi.todoapp.clickListeners.ItemClickListener
-import com.washfi.todoapp.db.Note
+import com.washfi.todoapp.data.local.db.Note
 import com.washfi.todoapp.utils.AppConstant
 import com.washfi.todoapp.utils.AppConstant.DESCRIPTION
 import com.washfi.todoapp.utils.AppConstant.IMAGE_PATH
 import com.washfi.todoapp.utils.AppConstant.TITLE
-import com.washfi.todoapp.utils.PrefConstant
-import com.washfi.todoapp.workManager.MyWorker
+import com.washfi.todoapp.data.local.pref.PrefConstant
+import com.washfi.todoapp.utils.workManager.MyWorker
 import java.util.concurrent.TimeUnit
 
 class MyNotesActivity : AppCompatActivity() {

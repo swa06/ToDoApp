@@ -1,4 +1,4 @@
-package com.washfi.todoapp.db
+package com.washfi.todoapp.data.local.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

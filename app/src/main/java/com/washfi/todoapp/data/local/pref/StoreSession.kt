@@ -1,4 +1,4 @@
-package com.washfi.todoapp.utils
+package com.washfi.todoapp.data.local.pref
 
 import android.content.Context
 import android.content.SharedPreferences
