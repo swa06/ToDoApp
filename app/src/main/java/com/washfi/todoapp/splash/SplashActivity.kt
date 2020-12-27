@@ -10,8 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.washfi.todoapp.data.local.pref.PrefConstant
 import com.washfi.todoapp.R
-import com.washfi.todoapp.activity.LoginActivity
-import com.washfi.todoapp.activity.MyNotesActivity
+import com.washfi.todoapp.login.LoginActivity
+import com.washfi.todoapp.mynotes.MyNotesActivity
 import com.washfi.todoapp.onboarding.OnboardingActivity
 import com.washfi.todoapp.data.local.pref.StoreSession
 

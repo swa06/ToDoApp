@@ -1,4 +1,4 @@
-package com.washfi.todoapp.adapter
+package com.washfi.todoapp.mynotes.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,18 +10,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.washfi.todoapp.R
-import com.washfi.todoapp.clickListeners.ItemClickListener
+import com.washfi.todoapp.mynotes.clickListeners.ItemClickListener
 import com.washfi.todoapp.data.local.db.Note
 
 class NoteAdapter(val list: List<Note>, val itemClickListener: ItemClickListener) :
         RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.notes_adapter_layout, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: NoteAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val notes =list[position]
         val title = notes.title
         val description = notes.description

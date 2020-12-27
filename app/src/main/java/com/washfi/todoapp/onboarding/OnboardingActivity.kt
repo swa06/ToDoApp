@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.washfi.todoapp.R
-import com.washfi.todoapp.activity.LoginActivity
+import com.washfi.todoapp.login.LoginActivity
 import com.washfi.todoapp.data.local.pref.PrefConstant.ON_BOARDED_SUCCESSFULLY
 import com.washfi.todoapp.data.local.pref.StoreSession
 

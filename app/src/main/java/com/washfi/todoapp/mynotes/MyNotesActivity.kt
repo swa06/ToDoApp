@@ -1,4 +1,4 @@
-package com.washfi.todoapp.activity
+package com.washfi.todoapp.mynotes
 
 import android.app.Activity
 import android.content.Context
@@ -17,8 +17,11 @@ import androidx.work.WorkManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.washfi.todoapp.NotesApp
 import com.washfi.todoapp.R
-import com.washfi.todoapp.adapter.NoteAdapter
-import com.washfi.todoapp.clickListeners.ItemClickListener
+import com.washfi.todoapp.addnotes.AddNotesActivity
+import com.washfi.todoapp.blog.BlogActivity
+import com.washfi.todoapp.detail.DetailActivity
+import com.washfi.todoapp.mynotes.adapter.NoteAdapter
+import com.washfi.todoapp.mynotes.clickListeners.ItemClickListener
 import com.washfi.todoapp.data.local.db.Note
 import com.washfi.todoapp.utils.AppConstant
 import com.washfi.todoapp.utils.AppConstant.DESCRIPTION

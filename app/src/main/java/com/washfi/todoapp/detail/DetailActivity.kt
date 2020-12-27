@@ -1,4 +1,4 @@
-package com.washfi.todoapp.activity
+package com.washfi.todoapp.detail
 
 import android.os.Bundle
 import android.widget.TextView

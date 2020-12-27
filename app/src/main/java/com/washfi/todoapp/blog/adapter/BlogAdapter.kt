@@ -1,4 +1,4 @@
-package com.washfi.todoapp.adapter
+package com.washfi.todoapp.blog.adapter
 
 import android.view.LayoutInflater
 import android.view.View

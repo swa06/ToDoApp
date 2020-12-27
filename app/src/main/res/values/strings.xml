@@ -11,4 +11,5 @@
     <string name="choose_images_either_from_camera_or_your_gallery">Choose images either from Camera or Your gallery</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    <string name="select_picker">Select Picker</string>
 </resources>

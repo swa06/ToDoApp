@@ -1,4 +1,4 @@
-package com.washfi.todoapp.activity
+package com.washfi.todoapp.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import com.washfi.todoapp.utils.AppConstant
 import com.washfi.todoapp.data.local.pref.PrefConstant
 import com.washfi.todoapp.R
 import com.washfi.todoapp.data.local.pref.StoreSession
+import com.washfi.todoapp.mynotes.MyNotesActivity
 
 class LoginActivity : AppCompatActivity() {
     lateinit var editTextFullName: EditText

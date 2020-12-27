@@ -1,4 +1,4 @@
-package com.washfi.todoapp.activity
+package com.washfi.todoapp.blog
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,7 @@ import com.androidnetworking.common.Priority
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.ParsedRequestListener
 import com.washfi.todoapp.R
-import com.washfi.todoapp.adapter.BlogAdapter
+import com.washfi.todoapp.blog.adapter.BlogAdapter
 import com.washfi.todoapp.data.remote.model.JsonResponse
 
 

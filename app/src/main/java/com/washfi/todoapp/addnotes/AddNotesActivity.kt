@@ -1,4 +1,4 @@
-package com.washfi.todoapp.activity
+package com.washfi.todoapp.addnotes
 
 import android.Manifest
 import android.app.Activity
@@ -22,6 +22,7 @@ import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.washfi.todoapp.BuildConfig
 import com.washfi.todoapp.R
+import com.washfi.todoapp.addnotes.bottomsheet.FileSelectorFragment
 import com.washfi.todoapp.utils.AppConstant
 import java.io.File
 import java.lang.Exception
@@ -30,16 +31,19 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class AddNotesActivity : AppCompatActivity() {
+class AddNotesActivity : AppCompatActivity(), OnOptionClickListener {
+    companion object {
+        private const val REQUEST_CODE_GALLERY = 2
+        private const val REQUEST_CODE_CAMERA = 3
+        private const val REQUEST_PERMISSION_CODE = 124
+    }
+
     lateinit var editTextTitle: EditText
     lateinit var editTextDescription: EditText
     lateinit var submitButton: Button
     lateinit var imageViewAdd: ImageView
-    val REQUEST_CODE_GALLERY = 2
-    val REQUEST_CODE_CAMERA = 3
-    val REQUEST_PERMISSION_CODE = 124
     var picturePath = ""
-    lateinit var imageLocation:File
+    lateinit var imageLocation: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,10 +68,15 @@ class AddNotesActivity : AppCompatActivity() {
         imageViewAdd.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 if (checkAndRequestPermission())
-                    setUpDialog()
+                    openPicker()
             }
 
         })
+    }
+
+    private fun openPicker() {
+        val dialog = FileSelectorFragment.newInstance()
+        dialog.show(supportFragmentManager, FileSelectorFragment.TAG)
     }
 
     private fun checkAndRequestPermission(): Boolean {
@@ -95,13 +104,13 @@ class AddNotesActivity : AppCompatActivity() {
         when (requestCode) {
             REQUEST_PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    setUpDialog()
+                    openPicker()
                 }
             }
         }
     }
 
-    private fun setUpDialog() {
+/*    private fun setUpDialog() {
         val view = LayoutInflater.from(this@AddNotesActivity).inflate(R.layout.dialog_selector, null)
         val textViewCamera = view.findViewById<TextView>(R.id.textViewCamera)
         val textViewGallery = view.findViewById<TextView>(R.id.textViewGallery)
@@ -141,7 +150,7 @@ class AddNotesActivity : AppCompatActivity() {
         })
 
         dialog.show()
-    }
+    }*/
 
     private fun createImageFile(): File? {
         val timeStamp = SimpleDateFormat("yyyyMMddHHmmss").format(Date())
@@ -173,4 +182,34 @@ class AddNotesActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onCameraClick() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (takePictureIntent.resolveActivity(packageManager) != null) {
+            var photoFile: File? = null
+            try {
+                photoFile = createImageFile()
+            } catch (e: Exception) {
+                Log.d("AddNotesActivity", e.toString())
+            }
+            if (photoFile != null) {
+                val photoUri = FileProvider.getUriForFile(this@AddNotesActivity,
+                        BuildConfig.APPLICATION_ID + ".provider", photoFile)
+                imageLocation = photoFile
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+
+                startActivityForResult(takePictureIntent, REQUEST_CODE_CAMERA)
+            }
+        }
+    }
+
+    override fun onGalleryClick() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, REQUEST_CODE_GALLERY)
+    }
+}
+
+interface OnOptionClickListener {
+    fun onCameraClick()
+    fun onGalleryClick()
 }
